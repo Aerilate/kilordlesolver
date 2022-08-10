@@ -27,11 +27,9 @@ def run(words, bound):
 
     obj = [1] * len(words)
     rhs_ineq = [-1] * 26 * 5
-    # bnd = [(0,1) for _ in range(len(words))]
     opt = linprog(c=obj, A_ub=lhs_ineq, b_ub=rhs_ineq, 
                                  method="revised simplex")
 
-    # print(opt)
     result = []
     for i, x in enumerate(opt.x):
         if x > bound:
